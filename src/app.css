@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    font-family: 'Lexend', sans-serif !important;
+    font-size: 6rem;
+}
+h2 { font-size: 3rem; }
+* {
+    font-family: 'Space Grotesk';
+    @apply text-_ghostwhite;
+}
+.main {
+    @apply min-w-full h-[calc(100vh-3.5rem)] text-center flex flex-col justify-center align-middle;
+}
+.full {
+    @apply min-w-full h-screen text-center flex flex-col justify-center align-middle;
+}
