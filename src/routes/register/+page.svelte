@@ -6,6 +6,7 @@
     import { createUserWithEmailAndPassword, deleteUser, updateProfile } from 'firebase/auth';
     import { doc, setDoc } from 'firebase/firestore';
     import { firebaseAuth, db } from '$lib/firebase';
+	import ErrorHandler from '$lib/components/ErrorHandler.svelte';
 
     //Form fields
     let email: string;
@@ -18,9 +19,8 @@
 
     //Server-side error handling
     let submitting: boolean = false;
-    let error: Error;
-    let errorType: string;
-    let actionMessage: string;
+    let error: Error | undefined = undefined;
+    let actionMessage: string = "";
 
     //Form elements
     let section1: HTMLDivElement;
@@ -57,22 +57,19 @@
                 goto('/login');
             }).catch((e) => {
                 submitting = false;
-                errorType = 'Database';
-                actionMessage = 'Attempting to reset...'
+                actionMessage = 'Attempting to reset, please wait...'
                 error = e;
 
                 //Revert user creation
                 deleteUser(userCredential.user).then(() => {
                     actionMessage = 'Please check your details and try again.'
                 }).catch((e) => {
-                    errorType = 'User Removal'
                     actionMessage = 'Please email support.'
                     error = e;
                 });
             })
         }).catch((e) => {
             submitting = false;
-            errorType = 'User Creation';
             actionMessage = 'Please check your details and try again.'
             error = e;
         });
@@ -170,13 +167,7 @@
                         {:else} Register
                         {/if}
                     </button>
-                    {#if errorType !== undefined}
-                        <div class="w-[48rem] m-4">
-                            <p class="text-xl">There was an error (see below). {actionMessage}</p>
-                            <p class="text-red-600">{errorType} Error: {error.message}</p>
-                            <p>If this error is coming up repeatedly, please email support, providing a full screenshot of the webpage.</p>
-                        </div>
-                    {/if}
+                    <ErrorHandler {error} {actionMessage}/>
                 </div>
             {/if}
         </form>

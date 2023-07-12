@@ -6,12 +6,12 @@
     import { signInWithEmailAndPassword } from 'firebase/auth';
     import { firebaseAuth } from '$lib/firebase';
     import { authUser } from '$lib/authStore';
+	import ErrorHandler from '$lib/components/ErrorHandler.svelte';
    
     let email: string;
     let password: string;
     let submitting: boolean = false;
-    let success: boolean | undefined = undefined;
-    let error: Error;
+    let error: Error | undefined = undefined;
  
     const login = () => {
         submitting = true;
@@ -23,7 +23,6 @@
             goto('/dashboard');
         }).catch((e) => {
             submitting = false;
-            success = false;
             error = e;
         });
     };
@@ -47,12 +46,7 @@
                 {/if}
             </button>
         </form>
-        {#if success === false}
-            <div class="w-[48rem] m-4">
-                <p class="text-xl">There was an error. Please check your details and try again.</p>
-                <p class="text-red-600">{error.message}</p>
-            </div>
-        {/if}
+        <ErrorHandler {error} actionMessage="Please check your details and try again." />
     </div>
 </div>
 
