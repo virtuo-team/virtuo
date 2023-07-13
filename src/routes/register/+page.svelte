@@ -83,11 +83,11 @@
         <h2>Never forget to practice again.</h2>
         <form class="text-center px-8 pt-8" bind:this={regform} on:submit|preventDefault={register}>
             <div class="section" bind:this={section1}>
-                <div class="flex gap-2 mb-4">
+                <div class="row gap-2">
                     <input name="email" type="email" placeholder="Email" required bind:value={email}/>
                     <input name="password" type="password" placeholder="Password" required bind:value={password}/>
                 </div>
-                <button type="button" class="rounded-2xl mx-auto bg-_cerise px-4 py-2" on:click={() => {
+                <button type="button" class="bg-_cerise" on:click={() => {
                     if (regform.checkValidity()) {
                         let fo = section1.animate(fadeOut, fadeOpts)
                         currentSection = 2;
@@ -103,12 +103,12 @@
             </div>
             {#if currentSection === 2}
                 <div class="section hidden" bind:this={section2}>
-                    <div class="mb-4 flex gap-2">
+                    <div class="row gap-2">
                         <input name="fname" type="text" placeholder="First Name" required bind:value={fname}/>
                         <input name="lname" type="text" placeholder="Last Name" required bind:value={lname}/>
                     </div>
 
-                    <div id="type" class="flex justify-center align-middle mb-4 gap-4">
+                    <div id="type" class="row gap-6">
                         <p>I am a...</p>
 
                         <input id="student" name="type" type="radio" value="student" bind:group={type} required/>
@@ -121,7 +121,7 @@
                         <label for="teacher">Teacher</label>
                     </div>
                     
-                    <div class="flex justify-center align-middle mb-4 gap-4">
+                    <div class="row float-left gap-6">
                         <p>Date of birth:</p>
                         <select name="dobMonth" required bind:value={dobMonth}>
                             <option value=1>January</option>
@@ -150,23 +150,24 @@
                             } else { elem.setCustomValidity(""); }
                         }}/>
                     </div>
-                    
-                    <button class="rounded-2xl mx-auto bg-_royalblue px-4 py-2" type="button" on:click={() => {
-                        let fo = section2.animate(fadeOut, fadeOpts);
-                        fo.onfinish = () => {
-                            section2.style.display='none';
-                            section1.style.display='block';
-                            section1.animate(fade, fadeOpts);
-                            currentSection = 1;
-                        }
-                    }}>Previous</button>
-                    <button class="rounded-2xl mx-auto bg-_cerise px-4 py-2" type="submit">
-                        {#if submitting}
-                            <Loading style="inline-block h-4"/>
-                            Registering
-                        {:else} Register
-                        {/if}
-                    </button>
+                    <div class="row float-right gap-4">
+                        <button class="bg-_royalblue" type="button" on:click={() => {
+                            let fo = section2.animate(fadeOut, fadeOpts);
+                            fo.onfinish = () => {
+                                section2.style.display='none';
+                                section1.style.display='block';
+                                section1.animate(fade, fadeOpts);
+                                currentSection = 1;
+                            }
+                        }}>Previous</button>
+                        <button class="bg-_cerise" type="submit">
+                            {#if submitting}
+                                <Loading style="inline-block h-4"/>
+                                Registering
+                            {:else} Register
+                            {/if}
+                        </button>
+                    </div>
                     <ErrorHandler {error} {actionMessage}/>
                 </div>
             {/if}
@@ -186,8 +187,10 @@
 
     input[type=text], input[type=email], input[type=password] { @apply rounded-2xl mx-auto p-2 w-96 bg-_eerieblack border-_eerieblack border-2; }
     input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { @apply appearance-none m-0; }
-    p { @apply my-auto; }
-    label, select { @apply bg-_eerieblack p-2 rounded-2xl w-52 border-_eerieblack border-2; }
+    p { @apply my-auto text-left w-32 p-2; }
+    label, select { @apply bg-_eerieblack p-2 rounded-2xl w-48 border-_eerieblack border-2; }
     input[type=radio] { @apply hidden; }
     input:focus, input[type=radio]:checked+label, select:focus { @apply outline-none border-_celestialblue; }
+    button { @apply rounded-2xl mx-auto px-4 py-2; }
+    .row { @apply flex justify-center align-middle mb-4; }
 </style>
