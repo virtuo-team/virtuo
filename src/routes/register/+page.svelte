@@ -83,7 +83,7 @@
         <h2>Never forget to practice again.</h2>
         <form class="text-center px-8 pt-8" bind:this={regform} on:submit|preventDefault={register}>
             <div class="section" bind:this={section1}>
-                <div class="row gap-2">
+                <div class="row gap-2 mb-4">
                     <input name="email" type="email" placeholder="Email" required bind:value={email}/>
                     <input name="password" type="password" placeholder="Password" required bind:value={password}/>
                 </div>
@@ -103,12 +103,12 @@
             </div>
             {#if currentSection === 2}
                 <div class="section hidden" bind:this={section2}>
-                    <div class="row gap-2">
+                    <div class="row gap-2 mb-4">
                         <input name="fname" type="text" placeholder="First Name" required bind:value={fname}/>
                         <input name="lname" type="text" placeholder="Last Name" required bind:value={lname}/>
                     </div>
 
-                    <div id="type" class="row gap-6">
+                    <div id="type" class="row gap-6 mb-4">
                         <p>I am a...</p>
 
                         <input id="student" name="type" type="radio" value="student" bind:group={type} required/>
@@ -192,5 +192,5 @@
     input[type=radio] { @apply hidden; }
     input:focus, input[type=radio]:checked+label, select:focus { @apply outline-none border-_celestialblue; }
     button { @apply rounded-2xl mx-auto px-4 py-2; }
-    .row { @apply flex justify-center align-middle mb-4; }
+    .row { @apply flex justify-center align-middle; }
 </style>
