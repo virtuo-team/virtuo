@@ -7,7 +7,7 @@
     let teacherEmail: string;
 
     const teacherRegister = () => {
-        console.log('coming soon baguette');
+        console.log('coming soon yoyfs baguette');
     }
 </script>
 
