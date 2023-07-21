@@ -5,6 +5,4 @@ interface AuthUser {
   email: string;
 }
 
-const authUser = writable<AuthUser | undefined>(undefined);
-
-export { authUser };
+export const authUser = writable<AuthUser | undefined>(undefined);

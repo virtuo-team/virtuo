@@ -4,9 +4,9 @@
 
 h1 {
     font-family: 'Lexend', sans-serif !important;
-    font-size: 6rem;
+    font-size: 3.5rem;
 }
-h2 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
 * {
     font-family: 'Space Grotesk';
     @apply text-_ghostwhite;
