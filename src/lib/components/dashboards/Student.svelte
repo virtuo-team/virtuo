@@ -13,6 +13,11 @@
 
 {#if userDoc.get('teacher')}
     <h1>You've practiced for {userDoc.get('practiceMins')} minutes today</h1>
+    <h2>Your Tasks:</h2>
+
+
+
+
 {:else}
     <div class="mx-auto p-8 bg-_jet rounded-3xl">
         <h1>Register under a teacher</h1>
@@ -24,3 +29,4 @@
         </form>
     </div>
 {/if}
+
