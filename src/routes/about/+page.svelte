@@ -10,6 +10,7 @@
     <ul>
         <li>Authentication routes (log in, register, log out) fully functional</li>
         <li>Added footer in bottom-left corner</li>
+        <li>Added Virtuo's Offical Mascot: Le Baguette</li>
     </ul>
 </div>
 <Footer />
