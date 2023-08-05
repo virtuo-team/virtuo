@@ -1,13 +1,11 @@
 <script lang="ts">
-	import VirtuoFull from '$lib/svg/VirtuoFull.svelte';
 	import type { DocumentSnapshot } from 'firebase/firestore';
-    import { db } from '$lib/firebase';
     export let userDoc: DocumentSnapshot;
 
     let teacherEmail: string;
 
     const teacherRegister = () => {
-        console.log('haveesh says he will do this at home to be continued...');
+        //nervermind we're moving this to a server function now because ✨firebase✨
     }
 </script>
 
@@ -25,10 +23,9 @@
             <div class="flex gap-2 mb-4">
                 <input name="teacherEmail" type="email" placeholder="Teacher's Email" required bind:value={teacherEmail}
                     class="rounded-2xl mx-auto p-2 w-96 bg-_eerieblack border-_eerieblack border-2 focus:outline-none focus:border-_celestialblue"/>
-                <button class="rounded-2xl mx-auto bg-_cerise px-4 py-2" type="submit">
-                    Submit
-                </button>
-                    
+                    <button class="rounded-2xl mx-auto bg-_cerise px-4 py-2" type="submit">
+                        Confirm and register
+                    </button>
             </div>
         </form>
     </div>
