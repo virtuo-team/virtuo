@@ -1,12 +1,9 @@
 <script lang="ts">
 	import type { DocumentSnapshot } from 'firebase/firestore';
+    import { enhance } from '$app/forms';
     export let userDoc: DocumentSnapshot;
 
     let teacherEmail: string;
-
-    const teacherRegister = () => {
-        //nervermind we're moving this to a server function now because ✨firebase✨
-    }
 </script>
 
 {#if userDoc.get('teacher')}
@@ -19,7 +16,7 @@
 {:else}
     <div class="mx-auto p-8 bg-_jet rounded-3xl">
         <h1>Register under a teacher</h1>
-        <form class="text-center px-8 pt-8" on:submit|preventDefault={teacherRegister}>
+        <form class="text-center px-8 pt-8" method="POST" action="?/teacherRegister" use:enhance>
             <div class="flex gap-2 mb-4">
                 <input name="teacherEmail" type="email" placeholder="Teacher's Email" required bind:value={teacherEmail}
                     class="rounded-2xl mx-auto p-2 w-96 bg-_eerieblack border-_eerieblack border-2 focus:outline-none focus:border-_celestialblue"/>
