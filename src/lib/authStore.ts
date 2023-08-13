@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
-var crypto = require('crypto');
+// var crypto = require('crypto');
 
 interface AuthUser {
   uid: string;
