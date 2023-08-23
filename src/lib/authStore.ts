@@ -1,6 +1,7 @@
+//TODO: Server-generated random token to improve the security of auth persistence
+
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
-var crypto = require('crypto');
 
 interface AuthUser {
   uid: string;
