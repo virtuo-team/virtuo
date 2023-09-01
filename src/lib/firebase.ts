@@ -1,6 +1,6 @@
 import { initializeApp, getApps, type FirebaseApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, initializeFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBU3KMHNNgOa45TYTp4e7Mv0tWAV8GZslo",
@@ -12,6 +12,8 @@ const firebaseConfig = {
 };
 
 export let firebaseApp: FirebaseApp | undefined;
-if (!getApps().length) { firebaseApp = initializeApp(firebaseConfig);}
+if (!getApps().length) { firebaseApp = initializeApp(firebaseConfig); }
 export const firebaseAuth = getAuth(firebaseApp!);
-export const db = getFirestore(firebaseApp!);
+export const db = initializeFirestore(firebaseApp!, {
+  ignoreUndefinedProperties: true,
+});

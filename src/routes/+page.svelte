@@ -11,9 +11,9 @@
 <Nav />
 <div class="main">
     <VirtuoFull style="h-24 mx-auto" />
-    <h2>Welcome to Virtuo InDev.</h2>
+    <h2>Welcome to Virtuo!</h2>
     <p class="w-4/5 mx-auto">
-        We're delighted to have you as a tester during our InDev stage.<br />
+        We're delighted to have you as a tester during our development stage.<br />
         Please be aware that changes are being rolled out live on the dev server, so things may break as you are using them.<br />
         While we appreciate your help in testing features, finding bugs and resolving security errors, <b class="text-lg">please do not try to intentionally damage any of the server-side infrastructure</b>.
     </p>
